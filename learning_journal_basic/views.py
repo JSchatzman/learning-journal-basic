@@ -1,51 +1,37 @@
 from pyramid.response import Response
-import io
 import os
-from pyramid.view import view_config
-# THIS_DIR = os.path.dirname(__file__)
-"""
 
-def home_page(request):
-    imported_text = io.open('/templates/index.html').read()
-    return Response(imported_text)
 
-def new_entry(request):
-    imported_text = io.open('/templates/new_entry.html').read()
-    return Response(imported_text)
+THIS_DIR = os.path.dirname(__file__)
 
-def edit_entry(request):
-    imported_text = io.open('/templates/edit_entry.html').read()
-    return Response(imported_text)
 
-def journal_entry(request):
-    imported_text = io.open('/templates/journal_entry.html').read()
-    return Response(imported_text)
+def home(request):
+    """Home view handler."""
+    file_contents = open(os.path.join(THIS_DIR, 'templates/index.jinja2')).read()
+    return Response(file_contents)
 
-"""
 
-"""
-@view_config(route_name='home', renderer='templates')
-def my_view(request):
-    #return {'project': 'learning_journal_basic'}
-    return 
+def detail(request):
+    """Detail view handler."""
+    file_contents = open(os.path.join(THIS_DIR, 'data/journal.html')).read()
+    return Response(file_contents)
 
-"""
-@view_config(route_name='home', renderer='/templates/index.jinja2')
-def home_page(request):
-    #return Response(imported_text)
-    return {'test': 'testvalue'}
 
+def create(request):
+    """Create new view handler."""
+    file_contents = open(os.path.join(THIS_DIR, 'templates/new_entry.html')).read()
+    return Response(file_contents)
+
+
+def update(request):
+    """Update/edit view handler."""
+    file_contents = open(os.path.join(THIS_DIR, 'templates/edit_entry.html')).read()
+    return Response(file_contents)
 
 
 def includeme(config):
-    config.add_view(home_page,
-                    route_name='home'
-                    )
-
-"""from pyramid.view import view_config
-
-
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    return {'project': 'learning_journal_basic'}
-"""
+    """Pyramid view configuration."""
+    config.add_view(home, route_name="home")
+    config.add_view(detail, route_name="detail")
+    config.add_view(update, route_name="update")
+    config.add_view(create, route_name="create")
