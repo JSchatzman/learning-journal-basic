@@ -13,19 +13,19 @@ def home(request):
 
 def detail(request):
     """Detail view handler."""
-    file_contents = open(os.path.join(THIS_DIR, 'data/journal.html')).read()
+    file_contents = open(os.path.join(THIS_DIR, 'data/journal.jinja2')).read()
     return Response(file_contents)
 
 
 def create(request):
     """Create new view handler."""
-    file_contents = open(os.path.join(THIS_DIR, 'templates/new_entry.html')).read()
+    file_contents = open(os.path.join(THIS_DIR, 'templates/new_entry.jinja2')).read()
     return Response(file_contents)
 
 
 def update(request):
     """Update/edit view handler."""
-    file_contents = open(os.path.join(THIS_DIR, 'templates/edit_entry.html')).read()
+    file_contents = open(os.path.join(THIS_DIR, 'templates/edit_entry.jinja2')).read()
     return Response(file_contents)
 
 
