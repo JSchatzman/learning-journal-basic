@@ -1,4 +1,4 @@
-"""Include these routes in deploymentt."""
+"""Include these routes in deployment."""
 
 
 def includeme(config):
