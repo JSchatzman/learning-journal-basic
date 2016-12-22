@@ -18,13 +18,10 @@ Description: learning_journal_basic README
         
         - $VENV/bin/pserve development.ini
         
-        
-        
         0.0
         ---
         
-        -  Initial version
-        
+        - Initial version
 Keywords: web pyramid pylons
 Platform: UNKNOWN
 Classifier: Programming Language :: Python

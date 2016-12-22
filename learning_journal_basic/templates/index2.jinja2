@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jordan Schatzman Learning Blog">
+    <meta name="author" content="Jordan Schatzman">
+    <title>Jordan Schatzman - Learning Blog</title>
+    <link href="../static/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="page-header">
+                    <a href="/">Home</a>
+                    <br>
+                    Learning Blog!
+                </h1>
+                {% if entries %}
+                    {% for entry in entries %}
+                        <h2>
+                            <a href = "{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a>
+                        </h2>
+                        <h3>
+                            <a href = "{{ request.route_url('update', id=entry.id) }}">Edit</a>
+                        </h3>  
+                            <p class = "lead">
+                                by Jordan Schatzman
+                            </p>
+                            <p>Posted on {{entry.date}}</p>
+                            <br/>
+                    {% endfor %}
+                {% else %}
+                    <p>This journal is empty</p>
+                {% endif %}
+            </div>
+        </div>
+</body>
+</html>
