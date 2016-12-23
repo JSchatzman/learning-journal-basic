@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <article>
-            <h1>LJ - Day 12</h1>
-            <hr />
-            <p>Created <strong>Aug 23, 2016</strong></p>
-            <hr />
-            <p>Sample body text.</p>
-        </article>
-    </body>
-</html>
+
+{% extends "templates/layout.jinja2" %}
+{% block title %}
+Entry Detail
+{% endblock %}
+{% block body %}
+<h2>
+    {{ entries.title }}
+</h2>
+<br>
+<h3>
+    <a href="{{ request.route_url('update', id=entries.id) }}">Edit</a>
+</h3>
+<p class="lead">by Jordan Schatzman</p>
+<p>{{entries.body}}</p>
+{% endblock %}

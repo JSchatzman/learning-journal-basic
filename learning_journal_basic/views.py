@@ -37,7 +37,7 @@ def home_view(request):
     return {"entries": ENTRIES}
 
 
-@view_config(route_name='detail', renderer='data/journal2.jinja2')
+@view_config(route_name='detail', renderer='templates/detail.jinja2')
 def detail_view(request):
     """Detail view handler."""
     entry_id = int(request.matchdict['id'])
@@ -51,8 +51,8 @@ def create_view(request):
     return {'entries': ENTRIES[entry_id]}
 
 
-@view_config(route_name='update', renderer='templates/edit_entry4.jinja2')
+@view_config(route_name='update', renderer='templates/update.jinja2')
 def update_view(request):
     """Update/edit view handler."""
     entry_id = int(request.matchdict['id'])
-    return {'entries': ENTRIES}
+    return {'entries': ENTRIES[entry_id]}
