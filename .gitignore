@@ -11,7 +11,7 @@ __pycache__/
 env/
 build/
 develop-eggs/
-learning_journal_basic/__pycache__/
+./learning_journal_basic/__pycache__/.
 dist/
 downloads/
 eggs/
@@ -90,3 +90,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+learning_journal_basic.egg-info/
