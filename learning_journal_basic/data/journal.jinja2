@@ -12,7 +12,7 @@
     <title>Jordan Schatzman - Learning Blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../static/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap.min.css" type="text/css" rel="stylesheet">
 
 </head>
 
@@ -32,10 +32,11 @@
 
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="/journal/1">{{entry.title}}</a>
+                    {{ entries.title }}
+                    <a href="{{ request.route_url('update', id=entries.id) }}">Edit</a>
                 </h2>
                 <p class="lead">by Jordan Schatzman</p>
-                <p>{{entry.body}}</p>
+                <p>{{entries.body}}</p>
 
             </div>
 

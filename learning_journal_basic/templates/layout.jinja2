@@ -20,24 +20,9 @@
                     <br>
                     Learning Blog
                 </h1>
-                {% if entries %}
-                    {% for entry in entries %}
-                        <h2>
-                            <a href = "{{ request.route_url('detail', id=entry.id) }}">{{ entry.title }}</a>
-                        </h2>
-                        <h3>
-                            <a href = "{{ request.route_url('update', id=entry.id) }}">Edit</a>
-                        </h3>  
-                            <p class = "lead">
-                                by Jordan Schatzman
-                            </p>
-                            <p>Posted on {{entry.date}}</p>
-                            <br/>
-                    {% endfor %}
-                {% else %}
-                    <p>This journal is empty</p>
-                {% endif %}
+                {% block body %}{% endblock %}
             </div>
         </div>
+    </div>    
 </body>
 </html>
