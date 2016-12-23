@@ -47,8 +47,7 @@ def detail_view(request):
 @view_config(route_name='create', renderer='templates/new_entry.jinja2')
 def create_view(request):
     """Create new view handler."""
-    entry_id = int(request.matchdict['id'])
-    return {'entries': ENTRIES[entry_id]}
+    return {}
 
 
 @view_config(route_name='update', renderer='templates/update.jinja2')

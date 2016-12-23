@@ -90,3 +90,5 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+learning_journal_basic.egg-info/
