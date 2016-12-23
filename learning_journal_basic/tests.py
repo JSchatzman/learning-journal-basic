@@ -1,4 +1,5 @@
-# tests.py
+"""Test my learning journal."""
+
 import pytest
 from pyramid import testing
 
@@ -29,14 +30,43 @@ def test_root_contents(testapp):
 
 
 def test_update_page_renders_file_data(testapp):
-    """Ensure my update  some data."""
-    from .views import ENTRIES
+    """Ensure a detail pages exists."""
     response = testapp.get('/journal/0', status=200)
     assert 'lecture was difficult' in str(response.html)
 
 
-def test_edit_entry_page_exists(testapp):
+def test_multiple_edit_entry_page_exists(testapp):
     """Test that multiple journal pages exist."""
-    response = testapp.get("/journal/0/edit-entry", status=200)
+    response = testapp.get("/journal/2/edit-entry", status=200)
     html = response.html
-    assert 'submit' in str(response.html)
+    assert 'Submit' in str(response.html)
+
+
+def test_create_new_page_exists(testapp):
+    """Test that the create new page exists."""
+    response = testapp.get("/journal/new-entry", status=200)
+    assert 'New Journal' in str(response.html)
+
+
+def test_for_home_link_in_detail(testapp):
+    """Test home page link exists in detail page."""
+    response = testapp.get('/journal/0', status=200)
+    html = response.html
+    """ There should be one link that is not a link to specific article."""
+    assert '<a href="/">Home</a>' in map(str, html.findAll("a"))
+
+
+def test_for_home_link_in_update(testapp):
+    """Test home page link exists in detail page."""
+    response = testapp.get('/journal/1/edit-entry', status=200)
+    html = response.html
+    """ There should be one link that is not a link to specific article."""
+    assert '<a href="/">Home</a>' in map(str, html.findAll("a"))
+
+
+def test_for_home_link_in_new(testapp):
+    """Test home page link exists in create new page page."""
+    response = testapp.get('/journal/new-entry', status=200)
+    html = response.html
+    """ There should be one link that is not a link to specific article."""
+    assert '<a href="/">Home</a>' in map(str, html.findAll("a"))
